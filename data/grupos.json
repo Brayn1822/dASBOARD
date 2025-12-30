@@ -1,0 +1,15 @@
+[
+  { "sede": "KENNEDY", "cantidad": 208, "tipo": "AUDITORIO PRINCIPAL", "estado": "abierto", "mes": "abril", "anio": 2025 },
+  { "sede": "FONTIBÓN / ENGATIVÁ", "cantidad": 103, "tipo": "AUDITORIO PRINCIPAL", "estado": "abierto", "mes": "abril", "anio": 2025 },
+  { "sede": "BOSA", "cantidad": 84, "tipo": "AUDITORIO PRINCIPAL", "estado": "cerrado", "mes": "abril", "anio": 2025 },
+  { "sede": "INTERLOCALIDADES", "cantidad": 1, "tipo": "AUDITORIO PRINCIPAL", "estado": "abierto", "mes": "abril", "anio": 2025 },
+
+  { "sede": "TEJAR", "cantidad": 136, "tipo": "SEDES BOGOTÁ", "estado": "abierto", "mes": "abril", "anio": 2025 },
+  { "sede": "CIUDAD BOLIVAR", "cantidad": 112, "tipo": "SEDES BOGOTÁ", "estado": "abierto", "mes": "abril", "anio": 2025 },
+  { "sede": "SOACHA", "cantidad": 103, "tipo": "SEDES BOGOTÁ", "estado": "cerrado", "mes": "abril", "anio": 2025 },
+  { "sede": "USME", "cantidad": 97, "tipo": "SEDES BOGOTÁ", "estado": "abierto", "mes": "abril", "anio": 2025 },
+
+  { "sede": "VALLEDUPAR", "cantidad": 88, "tipo": "SEDES NACIONALES", "estado": "abierto", "mes": "abril", "anio": 2025 },
+  { "sede": "GIRARDOT", "cantidad": 57, "tipo": "SEDES NACIONALES", "estado": "abierto", "mes": "abril", "anio": 2025 },
+  { "sede": "PITALITO", "cantidad": 25, "tipo": "SEDES NACIONALES", "estado": "cerrado", "mes": "abril", "anio": 2025 }
+]
