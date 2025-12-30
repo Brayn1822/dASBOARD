@@ -1,0 +1,35 @@
+const gruposData = [
+  { sede:"KENNEDY", lugar:"AUDITORIO PRINCIPAL", crec:181, warriors:7, relevo:20, noReportado:5, noRealizado:3 },
+  { sede:"FONTIBÓN / ENGATIVÁ", lugar:"AUDITORIO PRINCIPAL", crec:98, warriors:0, relevo:5, noReportado:0, noRealizado:1 },
+  { sede:"BOSA", lugar:"AUDITORIO PRINCIPAL", crec:75, warriors:1, relevo:6, noReportado:2, noRealizado:1 },
+  { sede:"INTERLOCALIDADES", lugar:"AUDITORIO PRINCIPAL", crec:1, warriors:0, relevo:0, noReportado:0, noRealizado:0 },
+
+  { sede:"TEJAR", lugar:"SEDES BOGOTÁ", crec:126, warriors:0, relevo:6, noReportado:11, noRealizado:1 },
+  { sede:"CIUDAD BOLIVAR", lugar:"SEDES BOGOTÁ", crec:112, warriors:0, relevo:0, noReportado:1, noRealizado:5 },
+  { sede:"SOACHA", lugar:"SEDES BOGOTÁ", crec:103, warriors:0, relevo:0, noReportado:0, noRealizado:4 },
+  { sede:"USME", lugar:"SEDES BOGOTÁ", crec:95, warriors:0, relevo:0, noReportado:1, noRealizado:10 },
+  { sede:"NORTE", lugar:"SEDES BOGOTÁ", crec:96, warriors:0, relevo:1, noReportado:5, noRealizado:4 },
+  { sede:"FUNZA", lugar:"SEDES BOGOTÁ", crec:41, warriors:0, relevo:0, noReportado:1, noRealizado:0 },
+  { sede:"RIONEGRO", lugar:"SEDES BOGOTÁ", crec:36, warriors:0, relevo:1, noReportado:8, noRealizado:1 },
+  { sede:"SAN CRISTÓBAL", lugar:"SEDES BOGOTÁ", crec:22, warriors:0, relevo:0, noReportado:5, noRealizado:1 },
+  { sede:"FACATATIVÁ", lugar:"SEDES BOGOTÁ", crec:20, warriors:0, relevo:0, noReportado:1, noRealizado:0 },
+  { sede:"SABANA", lugar:"SEDES BOGOTÁ", crec:18, warriors:0, relevo:1, noReportado:1, noRealizado:1 },
+  { sede:"UBATÉ", lugar:"SEDES BOGOTÁ", crec:5, warriors:0, relevo:0, noReportado:5, noRealizado:0 },
+
+  { sede:"VALLEDUPAR", lugar:"SEDES NACIONALES", crec:88, warriors:0, relevo:0, noReportado:0, noRealizado:1 },
+  { sede:"GIRARDOT", lugar:"SEDES NACIONALES", crec:57, warriors:0, relevo:0, noReportado:7, noRealizado:1 },
+  { sede:"PITALITO", lugar:"SEDES NACIONALES", crec:25, warriors:0, relevo:0, noReportado:3, noRealizado:0 },
+  { sede:"SAN SEBASTIAN", lugar:"SEDES NACIONALES", crec:24, warriors:1, relevo:1, noReportado:0, noRealizado:0 },
+  { sede:"MANIZALES", lugar:"SEDES NACIONALES", crec:23, warriors:0, relevo:0, noReportado:1, noRealizado:1 },
+  { sede:"IBAGUE", lugar:"SEDES NACIONALES", crec:20, warriors:0, relevo:0, noReportado:0, noRealizado:1 },
+  { sede:"MONTERIA", lugar:"SEDES NACIONALES", crec:19, warriors:0, relevo:0, noReportado:2, noRealizado:0 },
+  { sede:"CODAZZI", lugar:"SEDES NACIONALES", crec:13, warriors:0, relevo:2, noReportado:0, noRealizado:0 },
+  { sede:"ARMENIA", lugar:"SEDES NACIONALES", crec:13, warriors:0, relevo:0, noReportado:4, noRealizado:0 },
+  { sede:"ESPINAL", lugar:"SEDES NACIONALES", crec:12, warriors:0, relevo:0, noReportado:0, noRealizado:1 },
+  { sede:"SANTA ROSA DEL SUR", lugar:"SEDES NACIONALES", crec:11, warriors:1, relevo:0, noReportado:0, noRealizado:0 },
+  { sede:"SAN JOSE DEL GUAVIARE", lugar:"SEDES NACIONALES", crec:12, warriors:0, relevo:0, noReportado:1, noRealizado:0 },
+  { sede:"PEREIRA", lugar:"SEDES NACIONALES", crec:9, warriors:0, relevo:0, noReportado:1, noRealizado:1 },
+
+  { sede:"NACIONAL", lugar:"ON LINE", crec:1, warriors:0, relevo:0, noReportado:0, noRealizado:0 },
+  { sede:"INTERNACIONAL", lugar:"ON LINE", crec:1, warriors:0, relevo:0, noReportado:0, noRealizado:0 }
+];
