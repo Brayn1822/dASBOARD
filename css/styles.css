@@ -72,4 +72,59 @@ body {
   color: white;
 }
 
-.highlight
+.highlight h3,
+.highlight small {
+  color: white;
+}
+
+/* DETAILS */
+.details {
+  padding: 0 20px 40px;
+}
+
+details {
+  background: white;
+  border-radius: 10px;
+  margin-bottom: 14px;
+  box-shadow: 0 4px 12px rgba(0,0,0,.06);
+  overflow: hidden;
+}
+
+summary {
+  padding: 16px 20px;
+  cursor: pointer;
+  font-weight: 600;
+  background: #e5e7eb;
+  list-style: none;
+}
+
+summary:hover {
+  background: #dbeafe;
+}
+
+details[open] summary {
+  background: #bfdbfe;
+}
+
+details ul {
+  padding: 16px 30px;
+  margin: 0;
+}
+
+details li {
+  padding: 6px 0;
+  border-bottom: 1px dashed #ddd;
+}
+
+details li:last-child {
+  border-bottom: none;
+}
+
+/* RESPONSIVE */
+@media (max-width: 600px) {
+  .header {
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+  }
+}
