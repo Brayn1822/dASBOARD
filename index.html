@@ -2,61 +2,25 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Dashboard General</title>
+  <title>Dashboard Grupos & Asistencia</title>
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 
-<header>
-  <h1>Dashboard General</h1>
+<header class="topbar">
+  <h1>Dashboard</h1>
+  <div class="tabs">
+    <button class="tab active" data-view="grupos">Grupos</button>
+    <button class="tab" data-view="asistencia">Asistencia</button>
+  </div>
 </header>
 
-<!-- ===================== GRUPOS ===================== -->
-<section>
-  <h2>📌 Grupos</h2>
+<section class="kpis" id="kpis"></section>
 
-  <div class="cards">
-    <div class="card" id="totalGrupos"></div>
-    <div class="card" id="gruposAbiertos"></div>
-    <div class="card" id="gruposCerrados"></div>
-    <div class="card" id="totalSedes"></div>
-  </div>
-
-  <table>
-    <thead>
-      <tr>
-        <th>Sede</th>
-        <th>Lugar</th>
-        <th>Grupos</th>
-        <th>CREC</th>
-        <th>Warriors</th>
-        <th>Relevo</th>
-        <th>No Reportado</th>
-        <th>No Realizado</th>
-      </tr>
-    </thead>
-    <tbody id="tablaGrupos"></tbody>
-  </table>
-</section>
-
-<!-- ===================== ASISTENCIA ===================== -->
-<section>
-  <h2>👥 Asistencia</h2>
-
-  <div class="filters">
-    <button onclick="mostrarAsistencia('hermanos')">Hermanos</button>
-    <button onclick="mostrarAsistencia('ninos')">Niños</button>
-  </div>
-
-  <table>
-    <thead id="theadAsistencia"></thead>
-    <tbody id="tbodyAsistencia"></tbody>
-  </table>
-</section>
+<main id="content"></main>
 
 <script src="js/data-grupos.js"></script>
 <script src="js/data-asistencia.js"></script>
-<script src="js/grupos.js"></script>
-<script src="js/asistencia.js"></script>
+<script src="js/app.js"></script>
 </body>
 </html>
