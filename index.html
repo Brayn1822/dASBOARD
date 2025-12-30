@@ -2,38 +2,36 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Dashboard de Grupos</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="styles.css">
+  <title>Dashboard Asistencia</title>
+  <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 
 <header>
-  <h1>📊 Dashboard General de Grupos</h1>
+  <h1>Dashboard de Asistencia</h1>
 </header>
 
-<section class="kpis">
-  <div class="kpi">
-    <span>Total de Grupos</span>
-    <strong id="totalGrupos">0</strong>
-  </div>
-  <div class="kpi">
-    <span>Grupos Abiertos (Año)</span>
-    <strong id="gruposAbiertos">74</strong>
-  </div>
-  <div class="kpi">
-    <span>Grupos Cerrados (Año)</span>
-    <strong id="gruposCerrados">33</strong>
-  </div>
-  <div class="kpi">
-    <span>Total de Sedes</span>
-    <strong id="totalSedes">0</strong>
-  </div>
+<section class="cards">
+  <div class="card" id="totalHermanos">0<br><span>Hermanos</span></div>
+  <div class="card" id="totalNinos">0<br><span>Niños</span></div>
+  <div class="card" id="totalGrupos">0<br><span>Grupos</span></div>
+  <div class="card" id="totalSedes">0<br><span>Sedes</span></div>
 </section>
 
-<main id="dashboard"></main>
+<section class="filters">
+  <button onclick="mostrarTabla('hermanos')">Hermanos</button>
+  <button onclick="mostrarTabla('ninos')">Niños</button>
+</section>
 
-<script src="data.js"></script>
-<script src="app.js"></script>
+<section class="table-container">
+  <table id="tablaAsistencia">
+    <thead id="thead"></thead>
+    <tbody id="tbody"></tbody>
+  </table>
+</section>
+
+<script src="js/data-asistencia.js"></script>
+<script src="js/asistencia.js"></script>
+
 </body>
 </html>
