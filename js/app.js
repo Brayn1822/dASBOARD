@@ -17,9 +17,9 @@ function renderDashboard() {
   const mes = mesSelect.value;
   const anio = Number(anioSelect.value);
 
-  const filtrados = data.filter(item =>
-    (mes === "todos" || item.mes === mes) &&
-    item.anio === anio
+  const filtrados = data.filter(d =>
+    (mes === "todos" || d.mes === mes) &&
+    d.anio === anio
   );
 
   renderCards(filtrados);
@@ -31,25 +31,21 @@ function renderCards(datos) {
 
   tipos.forEach(tipo => {
     const items = datos.filter(d => d.tipo === tipo);
-
-    const total = sum(items);
-    const abiertos = sum(items.filter(i => i.estado === "abierto"));
-    const cerrados = sum(items.filter(i => i.estado === "cerrado"));
-
-    document.querySelector(`[data-card="${tipo}"]`).innerHTML = `
-      <h3>${tipo}</h3>
-      <p class="total">${total}</p>
-      <small>Abiertos: ${abiertos} | Cerrados: ${cerrados}</small>
-    `;
+    pintarCard(tipo, items);
   });
 
-  // TOTAL GENERAL
-  const total = sum(datos);
-  const abiertos = sum(datos.filter(i => i.estado === "abierto"));
-  const cerrados = sum(datos.filter(i => i.estado === "cerrado"));
+  pintarCard("TOTAL", datos);
+}
 
-  document.querySelector(`[data-card="TOTAL"]`).innerHTML = `
-    <h3>Total General</h3>
+function pintarCard(tipo, items) {
+  const total = sumar(items);
+  const abiertos = sumar(items.filter(i => i.estado === "abierto"));
+  const cerrados = sumar(items.filter(i => i.estado === "cerrado"));
+
+  const card = document.querySelector(`[data-card="${tipo}"]`);
+
+  card.innerHTML = `
+    <h3>${tipo === "TOTAL" ? "Total General" : tipo}</h3>
     <p class="total">${total}</p>
     <small>Abiertos: ${abiertos} | Cerrados: ${cerrados}</small>
   `;
@@ -61,9 +57,9 @@ function renderDetalles(datos) {
 
   const agrupado = {};
 
-  datos.forEach(item => {
-    if (!agrupado[item.tipo]) agrupado[item.tipo] = [];
-    agrupado[item.tipo].push(item);
+  datos.forEach(d => {
+    if (!agrupado[d.tipo]) agrupado[d.tipo] = [];
+    agrupado[d.tipo].push(d);
   });
 
   Object.keys(agrupado).forEach(tipo => {
@@ -73,9 +69,9 @@ function renderDetalles(datos) {
 
     const ul = document.createElement("ul");
 
-    agrupado[tipo].forEach(item => {
+    agrupado[tipo].forEach(d => {
       const li = document.createElement("li");
-      li.textContent = `${item.sede} — ${item.cantidad} grupos`;
+      li.textContent = `${d.sede} — ${d.cantidad} grupos`;
       ul.appendChild(li);
     });
 
@@ -85,6 +81,6 @@ function renderDetalles(datos) {
   });
 }
 
-function sum(arr) {
+function sumar(arr) {
   return arr.reduce((acc, el) => acc + el.cantidad, 0);
 }
