@@ -1,27 +1,7 @@
-const thead = document.getElementById("thead");
-const tbody = document.getElementById("tbody");
+const thead = document.getElementById("theadAsistencia");
+const tbody = document.getElementById("tbodyAsistencia");
 
-function calcularTotales() {
-  let totalHermanos = 0;
-  let totalNinos = 0;
-  let totalGrupos = 0;
-
-  asistencia.forEach(s => {
-    totalHermanos += s.hermanos.total;
-    totalNinos += s.ninos.total;
-    totalGrupos += s.grupos;
-  });
-
-  document.getElementById("totalHermanos").innerHTML = `${totalHermanos}<span>Hermanos</span>`;
-  document.getElementById("totalNinos").innerHTML = `${totalNinos}<span>Niños</span>`;
-  document.getElementById("totalGrupos").innerHTML = `${totalGrupos}<span>Grupos</span>`;
-  document.getElementById("totalSedes").innerHTML = `${asistencia.length}<span>Sedes</span>`;
-}
-
-function mostrarTabla(tipo) {
-  thead.innerHTML = "";
-  tbody.innerHTML = "";
-
+function mostrarAsistencia(tipo) {
   thead.innerHTML = `
     <tr>
       <th>Sede</th>
@@ -33,7 +13,9 @@ function mostrarTabla(tipo) {
     </tr>
   `;
 
-  asistencia.forEach(s => {
+  tbody.innerHTML = "";
+
+  asistenciaData.forEach(s => {
     const d = s[tipo];
     tbody.innerHTML += `
       <tr>
@@ -48,5 +30,4 @@ function mostrarTabla(tipo) {
   });
 }
 
-calcularTotales();
-mostrarTabla("hermanos");
+mostrarAsistencia("hermanos");
