@@ -1,3 +1,29 @@
+/***************
+ * TABS
+ ***************/
+const tabs = document.querySelectorAll(".tab");
+const views = document.querySelectorAll(".view");
+const kpisGrupos = document.getElementById("kpisGrupos");
+
+tabs.forEach(tab=>{
+  tab.onclick = ()=>{
+    tabs.forEach(t=>t.classList.remove("active"));
+    views.forEach(v=>v.classList.remove("active"));
+
+    tab.classList.add("active");
+    document
+      .getElementById(`view-${tab.dataset.view}`)
+      .classList.add("active");
+
+    // KPIs solo visibles en Grupos
+    kpisGrupos.style.display =
+      tab.dataset.view === "grupos" ? "grid" : "none";
+  };
+});
+
+/***************
+ * DASHBOARD GRUPOS (TU CÓDIGO ORIGINAL)
+ ***************/
 const dashboard = document.getElementById("dashboard");
 
 // KPIs
