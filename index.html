@@ -1,36 +1,191 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Dashboard de Grupos</title>
-  <link rel="stylesheet" href="css/styles.css">
+<meta charset="UTF-8">
+<title>Dashboard de Grupos</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+:root{
+  --bg:#0f172a;
+  --card:#1e293b;
+  --accent:#38bdf8;
+  --text:#e5e7eb;
+  --muted:#94a3b8;
+}
+
+*{
+  box-sizing:border-box;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+}
+
+header{
+  padding:20px;
+  text-align:center;
+  background:#020617;
+  border-bottom:1px solid #1e293b;
+}
+
+header h1{
+  margin:0;
+  font-size:1.8rem;
+}
+
+.container{
+  padding:20px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(320px, 1fr));
+  gap:20px;
+}
+
+.lugar{
+  background:var(--card);
+  border-radius:14px;
+  padding:18px;
+  box-shadow:0 10px 25px rgba(0,0,0,.3);
+}
+
+.lugar h2{
+  margin:0 0 15px;
+  font-size:1.2rem;
+  color:var(--accent);
+  border-bottom:1px solid #334155;
+  padding-bottom:8px;
+}
+
+.sede{
+  background:#020617;
+  border-radius:12px;
+  padding:14px;
+  margin-bottom:12px;
+}
+
+.sede h3{
+  margin:0 0 8px;
+  font-size:1rem;
+}
+
+.stats{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:8px;
+  font-size:.9rem;
+}
+
+.stat{
+  background:#1e293b;
+  padding:8px;
+  border-radius:8px;
+  display:flex;
+  justify-content:space-between;
+}
+
+.label{
+  color:var(--muted);
+}
+
+.total{
+  grid-column:span 2;
+  background:#0f172a;
+  border:1px solid #334155;
+}
+
+footer{
+  text-align:center;
+  padding:15px;
+  font-size:.8rem;
+  color:var(--muted);
+}
+</style>
 </head>
+
 <body>
 
-<header class="header">
-  <h1>📊 Dashboard de Grupos1</h1>
-
-  <div class="filters">
-    <select id="mes">
-      <option value="todos">Todos los meses</option>
-      <option value="abril">Abril</option>
-    </select>
-
-    <select id="anio">
-      <option value="2025">2025</option>
-    </select>
-  </div>
+<header>
+  <h1>📊 Dashboard General de Grupos</h1>
 </header>
 
-<section class="cards">
-  <div class="card" data-card="AUDITORIO PRINCIPAL"></div>
-  <div class="card" data-card="SEDES BOGOTÁ"></div>
-  <div class="card" data-card="SEDES NACIONALES"></div>
-  <div class="card highlight" data-card="TOTAL"></div>
-</section>
+<div class="container" id="dashboard"></div>
 
-<section class="details"></section>
+<footer>
+  Información consolidada por tipo de sede
+</footer>
 
-<script src="js/app.js"></script>
+<script>
+const data = [
+  {sede:"KENNEDY", lugar:"AUDITORIO PRINCIPAL", grupos:208, crec:181, warriors:7, relevo:20},
+  {sede:"FONTIBÓN / ENGATIVÁ", lugar:"AUDITORIO PRINCIPAL", grupos:103, crec:98, warriors:0, relevo:5},
+  {sede:"BOSA", lugar:"AUDITORIO PRINCIPAL", grupos:84, crec:75, warriors:1, relevo:6},
+  {sede:"INTERLOCALIDADES", lugar:"AUDITORIO PRINCIPAL", grupos:1, crec:1, warriors:0, relevo:0},
+
+  {sede:"TEJAR", lugar:"SEDES BOGOTÁ", grupos:136, crec:126, warriors:0, relevo:6},
+  {sede:"CIUDAD BOLIVAR", lugar:"SEDES BOGOTÁ", grupos:112, crec:112, warriors:0, relevo:0},
+  {sede:"SOACHA", lugar:"SEDES BOGOTÁ", grupos:103, crec:103, warriors:0, relevo:0},
+  {sede:"USME", lugar:"SEDES BOGOTÁ", grupos:95, crec:95, warriors:0, relevo:0},
+  {sede:"NORTE", lugar:"SEDES BOGOTÁ", grupos:97, crec:96, warriors:0, relevo:1},
+  {sede:"FUNZA", lugar:"SEDES BOGOTÁ", grupos:41, crec:41, warriors:0, relevo:0},
+  {sede:"RIONEGRO", lugar:"SEDES BOGOTÁ", grupos:37, crec:36, warriors:0, relevo:1},
+  {sede:"SAN CRISTÓBAL", lugar:"SEDES BOGOTÁ", grupos:23, crec:22, warriors:0, relevo:0},
+  {sede:"FACATATIVÁ", lugar:"SEDES BOGOTÁ", grupos:20, crec:20, warriors:0, relevo:0},
+  {sede:"SABANA", lugar:"SEDES BOGOTÁ", grupos:19, crec:18, warriors:0, relevo:1},
+  {sede:"UBATÉ", lugar:"SEDES BOGOTÁ", grupos:5, crec:5, warriors:0, relevo:0},
+
+  {sede:"VALLEDUPAR", lugar:"SEDES NACIONALES", grupos:88, crec:88, warriors:0, relevo:0},
+  {sede:"GIRARDOT", lugar:"SEDES NACIONALES", grupos:57, crec:57, warriors:0, relevo:0},
+  {sede:"PITALITO", lugar:"SEDES NACIONALES", grupos:25, crec:25, warriors:0, relevo:0},
+  {sede:"SAN SEBASTIAN", lugar:"SEDES NACIONALES", grupos:25, crec:24, warriors:1, relevo:1},
+  {sede:"MANIZALES", lugar:"SEDES NACIONALES", grupos:23, crec:23, warriors:0, relevo:0},
+  {sede:"IBAGUE", lugar:"SEDES NACIONALES", grupos:20, crec:20, warriors:0, relevo:0},
+  {sede:"MONTERIA", lugar:"SEDES NACIONALES", grupos:19, crec:19, warriors:0, relevo:0},
+  {sede:"CODAZZI", lugar:"SEDES NACIONALES", grupos:15, crec:13, warriors:0, relevo:2},
+  {sede:"ARMENIA", lugar:"SEDES NACIONALES", grupos:13, crec:13, warriors:0, relevo:0},
+  {sede:"ESPINAL", lugar:"SEDES NACIONALES", grupos:12, crec:12, warriors:0, relevo:0},
+  {sede:"SANTA ROSA DEL SUR", lugar:"SEDES NACIONALES", grupos:12, crec:11, warriors:1, relevo:0},
+  {sede:"SAN JOSE DEL GUAVIARE", lugar:"SEDES NACIONALES", grupos:12, crec:12, warriors:0, relevo:0},
+  {sede:"PEREIRA", lugar:"SEDES NACIONALES", grupos:9, crec:9, warriors:0, relevo:0},
+  {sede:"MEDELLÍN", lugar:"SEDES NACIONALES", grupos:0, crec:6, warriors:0, relevo:1},
+  {sede:"HONDA", lugar:"SEDES NACIONALES", grupos:6, crec:6, warriors:0, relevo:0},
+  {sede:"PUERTO LEGUIZAMO", lugar:"SEDES NACIONALES", grupos:6, crec:6, warriors:0, relevo:0},
+  {sede:"MARSELLA", lugar:"SEDES NACIONALES", grupos:6, crec:6, warriors:0, relevo:0},
+  {sede:"TUNJA", lugar:"SEDES NACIONALES", grupos:0, crec:6, warriors:0, relevo:0},
+  {sede:"LA MESA", lugar:"SEDES NACIONALES", grupos:3, crec:3, warriors:0, relevo:0},
+  {sede:"GUADUAS", lugar:"SEDES NACIONALES", grupos:2, crec:2, warriors:0, relevo:0},
+
+  {sede:"NACIONAL", lugar:"ON LINE", grupos:1, crec:1, warriors:0, relevo:0},
+  {sede:"INTERNACIONAL", lugar:"ON LINE", grupos:1, crec:1, warriors:0, relevo:0}
+];
+
+const dashboard = document.getElementById("dashboard");
+const lugares = [...new Set(data.map(d => d.lugar))];
+
+lugares.forEach(lugar=>{
+  const card = document.createElement("div");
+  card.className="lugar";
+  card.innerHTML=`<h2>${lugar}</h2>`;
+
+  data.filter(d=>d.lugar===lugar).forEach(d=>{
+    card.innerHTML+=`
+      <div class="sede">
+        <h3>${d.sede}</h3>
+        <div class="stats">
+          <div class="stat total"><span class="label">Total Grupos</span><strong>${d.grupos}</strong></div>
+          <div class="stat"><span class="label">CREC.</span>${d.crec}</div>
+          <div class="stat"><span class="label">WARRIORS</span>${d.warriors}</div>
+          <div class="stat"><span class="label">RELEVO</span>${d.relevo}</div>
+        </div>
+      </div>
+    `;
+  });
+
+  dashboard.appendChild(card);
+});
+</script>
+
 </body>
 </html>
