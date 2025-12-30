@@ -1,86 +1,49 @@
-let data = [];
+const dashboard = document.getElementById("dashboard");
 
-const mesSelect = document.getElementById("mes");
-const anioSelect = document.getElementById("anio");
+// KPIs
+const totalGrupos = gruposData.reduce((s,g)=> s + g.crec + g.warriors + g.relevo, 0);
+const totalSedes = new Set(gruposData.map(g=>g.sede)).size;
+const gruposAbiertos = totalGrupos; // puedes ajustar lógica real
+const gruposCerrados = 0;
 
-fetch("data/grupos.json")
-  .then(res => res.json())
-  .then(json => {
-    data = json;
-    renderDashboard();
+document.getElementById("totalGrupos").textContent = totalGrupos;
+document.getElementById("gruposAbiertos").textContent = gruposAbiertos;
+document.getElementById("gruposCerrados").textContent = gruposCerrados;
+document.getElementById("totalSedes").textContent = totalSedes;
+
+// Render Lugares
+const lugares = [...new Set(gruposData.map(g=>g.lugar))];
+
+lugares.forEach(lugar=>{
+  const lugarDiv = document.createElement("div");
+  lugarDiv.className="lugar";
+  lugarDiv.innerHTML=`<h2>${lugar} <span>▼</span></h2><div class="content"></div>`;
+
+  const content = lugarDiv.querySelector(".content");
+
+  const sedes = gruposData.filter(g=>g.lugar===lugar);
+
+  sedes.forEach(s=>{
+    const sedeDiv = document.createElement("div");
+    sedeDiv.className="sede";
+    sedeDiv.innerHTML=`
+      <h3>${s.sede} <span>▶</span></h3>
+      <div class="content">
+        <div class="tipo"><span>CREC</span><strong>${s.crec}</strong></div>
+        <div class="tipo"><span>WARRIORS</span><strong>${s.warriors}</strong></div>
+        <div class="tipo"><span>RELEVO</span><strong>${s.relevo}</strong></div>
+      </div>
+    `;
+
+    sedeDiv.querySelector("h3").onclick = e=>{
+      e.stopPropagation();
+      sedeDiv.querySelector(".content").classList.toggle("active");
+    };
+
+    content.appendChild(sedeDiv);
   });
 
-mesSelect.addEventListener("change", renderDashboard);
-anioSelect.addEventListener("change", renderDashboard);
+  lugarDiv.onclick = ()=> content.classList.toggle("active");
 
-function renderDashboard() {
-  const mes = mesSelect.value;
-  const anio = Number(anioSelect.value);
-
-  const filtrados = data.filter(d =>
-    (mes === "todos" || d.mes === mes) &&
-    d.anio === anio
-  );
-
-  renderCards(filtrados);
-  renderDetalles(filtrados);
-}
-
-function renderCards(datos) {
-  const tipos = ["AUDITORIO PRINCIPAL", "SEDES BOGOTÁ", "SEDES NACIONALES"];
-
-  tipos.forEach(tipo => {
-    const items = datos.filter(d => d.tipo === tipo);
-    pintarCard(tipo, items);
-  });
-
-  pintarCard("TOTAL", datos);
-}
-
-function pintarCard(tipo, items) {
-  const total = sumar(items);
-  const abiertos = sumar(items.filter(i => i.estado === "abierto"));
-  const cerrados = sumar(items.filter(i => i.estado === "cerrado"));
-
-  const card = document.querySelector(`[data-card="${tipo}"]`);
-
-  card.innerHTML = `
-    <h3>${tipo === "TOTAL" ? "Total General" : tipo}</h3>
-    <p class="total">${total}</p>
-    <small>Abiertos: ${abiertos} | Cerrados: ${cerrados}</small>
-  `;
-}
-
-function renderDetalles(datos) {
-  const contenedor = document.querySelector(".details");
-  contenedor.innerHTML = "";
-
-  const agrupado = {};
-
-  datos.forEach(d => {
-    if (!agrupado[d.tipo]) agrupado[d.tipo] = [];
-    agrupado[d.tipo].push(d);
-  });
-
-  Object.keys(agrupado).forEach(tipo => {
-    const details = document.createElement("details");
-    const summary = document.createElement("summary");
-    summary.textContent = tipo;
-
-    const ul = document.createElement("ul");
-
-    agrupado[tipo].forEach(d => {
-      const li = document.createElement("li");
-      li.textContent = `${d.sede} — ${d.cantidad} grupos`;
-      ul.appendChild(li);
-    });
-
-    details.appendChild(summary);
-    details.appendChild(ul);
-    contenedor.appendChild(details);
-  });
-}
-
-function sumar(arr) {
-  return arr.reduce((acc, el) => acc + el.cantidad, 0);
-}
+  dashboard.appendChild(lugarDiv);
+});
