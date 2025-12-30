@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Dashboard de Grupos</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+    <h1>📊 Dashboard de Grupos</h1>
+
+    <div class="filters">
+      <select id="mes">
+        <option value="todos">Todos los meses</option>
+        <option value="enero">Enero</option>
+        <option value="febrero">Febrero</option>
+        <option value="marzo">Marzo</option>
+        <option value="abril">Abril</option>
+      </select>
+
+      <select id="anio">
+        <option value="2025">2025</option>
+        <option value="2024">2024</option>
+      </select>
+    </div>
+  </header>
+
+  <!-- CARDS RESUMEN -->
+  <section class="cards">
+
+    <div class="card">
+      <h3>Auditorio Principal</h3>
+      <p class="total">395</p>
+      <small>Abiertos: 280 | Cerrados: 115</small>
+    </div>
+
+    <div class="card">
+      <h3>Sedes Bogotá</h3>
+      <p class="total">688</p>
+      <small>Abiertos: 420 | Cerrados: 268</small>
+    </div>
+
+    <div class="card">
+      <h3>Sedes Nacionales</h3>
+      <p class="total">299</p>
+      <small>Abiertos: 210 | Cerrados: 89</small>
+    </div>
+
+    <div class="card highlight">
+      <h3>Total General</h3>
+      <p class="total">1,082</p>
+      <small>Abiertos: 910 | Cerrados: 172</small>
+    </div>
+
+  </section>
+
+  <!-- DETALLE DESPLEGABLE -->
+  <section class="details">
+
+    <!-- AUDITORIO PRINCIPAL -->
+    <details>
+      <summary>Auditorio Principal</summary>
+      <ul>
+        <li>Kennedy — 208 grupos</li>
+        <li>Fontibón / Engativá — 103 grupos</li>
+        <li>Bosa — 84 grupos</li>
+        <li>Interlocalidades — 1 grupo</li>
+      </ul>
+    </details>
+
+    <!-- SEDES BOGOTÁ -->
+    <details>
+      <summary>Sedes Bogotá</summary>
+      <ul>
+        <li>Tejar — 136 grupos</li>
+        <li>Ciudad Bolívar — 112 grupos</li>
+        <li>Soacha — 103 grupos</li>
+        <li>Usme — 97 grupos</li>
+        <li>Norte — 97 grupos</li>
+      </ul>
+    </details>
+
+    <!-- SEDES NACIONALES -->
+    <details>
+      <summary>Sedes Nacionales</summary>
+      <ul>
+        <li>Valledupar — 88 grupos</li>
+        <li>Girardot — 57 grupos</li>
+        <li>Pitalito — 25 grupos</li>
+        <li>San Sebastián — 25 grupos</li>
+        <li>Manizales — 23 grupos</li>
+      </ul>
+    </details>
+
+  </section>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
