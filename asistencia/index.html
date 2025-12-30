@@ -2,84 +2,31 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Asistencia General</title>
-  <link rel="stylesheet" href="styles.css">
+  <title>Dashboard de Asistencia</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../styles.css">
 </head>
 <body>
 
-<h1>📊 Asistencia General</h1>
+<header>
+  <h1>✅ Dashboard de Asistencia</h1>
+  <a href="../index.html" class="btn-link">⬅ Volver a Grupos</a>
+</header>
 
-<div class="table-container">
-  <table>
-    <thead>
-      <tr>
-        <th rowspan="2">Sede</th>
-        <th rowspan="2">Grupos</th>
-        <th rowspan="2">Lugar</th>
+<section class="kpis">
+  <div class="kpi">
+    <span>Total Asistentes</span>
+    <strong id="totalAsistentes">0</strong>
+  </div>
+  <div class="kpi">
+    <span>Total Ausentes</span>
+    <strong id="totalAusentes">0</strong>
+  </div>
+</section>
 
-        <th colspan="5">Estado del Grupo</th>
-        <th colspan="5">Hermanos</th>
-        <th colspan="5">Niños</th>
-      </tr>
-      <tr>
-        <th>CREC.</th>
-        <th>WARRIORS</th>
-        <th>RELEVO</th>
-        <th>NO REP.</th>
-        <th>NO REAL.</th>
-
-        <th>Total</th>
-        <th>Nuevos</th>
-        <th>Conv.</th>
-        <th>Grupo</th>
-        <th>Culto</th>
-
-        <th>Total</th>
-        <th>Nuevos</th>
-        <th>Conv.</th>
-        <th>Grupo</th>
-        <th>Culto</th>
-      </tr>
-    </thead>
-
-    <tbody id="tablaAsistencia"></tbody>
-  </table>
-</div>
+<main id="dashboard"></main>
 
 <script src="data.js"></script>
-<script>
-  const tbody = document.getElementById("tablaAsistencia");
-
-  asistenciaData.forEach(item => {
-    const tr = document.createElement("tr");
-
-    tr.innerHTML = `
-      <td>${item.sede}</td>
-      <td>${item.grupos}</td>
-      <td>${item.lugar}</td>
-
-      <td>${item.estado.crec}</td>
-      <td>${item.estado.warriors}</td>
-      <td>${item.estado.relevo}</td>
-      <td>${item.estado.noReportado}</td>
-      <td>${item.estado.noRealizado}</td>
-
-      <td>${item.hermanos.total}</td>
-      <td>${item.hermanos.nuevos}</td>
-      <td>${item.hermanos.conversiones}</td>
-      <td>${item.hermanos.grupo}</td>
-      <td>${item.hermanos.culto}</td>
-
-      <td>${item.ninos.total}</td>
-      <td>${item.ninos.nuevos}</td>
-      <td>${item.ninos.conversiones}</td>
-      <td>${item.ninos.grupo}</td>
-      <td>${item.ninos.culto}</td>
-    `;
-
-    tbody.appendChild(tr);
-  });
-</script>
-
+<script src="app.js"></script>
 </body>
 </html>
