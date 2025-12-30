@@ -6,12 +6,10 @@ const totalGrupos = gruposData.reduce(
 );
 
 document.getElementById("totalGrupos").textContent = totalGrupos;
-document.getElementById("gruposAbiertos").textContent = 74;
-document.getElementById("gruposCerrados").textContent = 33;
 document.getElementById("totalSedes").textContent =
   new Set(gruposData.map(g=>g.sede)).size;
 
-// Render Lugares
+// Agrupar por lugar
 const lugares = [...new Set(gruposData.map(g=>g.lugar))];
 
 lugares.forEach(lugar=>{
@@ -19,9 +17,9 @@ lugares.forEach(lugar=>{
   lugarDiv.className="lugar";
   lugarDiv.innerHTML = `<h2>${lugar}</h2><div class="content"></div>`;
 
-  const content = lugarDiv.querySelector(".content");
+  const contentLugar = lugarDiv.querySelector(".content");
 
-  gruposData.filter(g=>g.lugar===lugar).forEach(s=>{
+  gruposData.filter(g=>g.lugar === lugar).forEach(s=>{
     const totalSede = s.crec + s.warriors + s.relevo;
 
     const sedeDiv = document.createElement("div");
@@ -29,7 +27,7 @@ lugares.forEach(lugar=>{
     sedeDiv.innerHTML = `
       <h3>
         ${s.sede}
-        <span>Total: ${totalSede}</span>
+        <span>${totalSede} grupos</span>
       </h3>
       <div class="meta">
         🚫 No reportado: ${s.noReportado} |
@@ -49,9 +47,9 @@ lugares.forEach(lugar=>{
       sedeDiv.querySelector(".content").classList.toggle("active");
     };
 
-    content.appendChild(sedeDiv);
+    contentLugar.appendChild(sedeDiv);
   });
 
-  lugarDiv.onclick = ()=> content.classList.toggle("active");
+  lugarDiv.onclick = ()=> contentLugar.classList.toggle("active");
   dashboard.appendChild(lugarDiv);
 });
