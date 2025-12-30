@@ -2,35 +2,61 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Dashboard Asistencia</title>
+  <title>Dashboard General</title>
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 
 <header>
-  <h1>Dashboard de Asistencia</h1>
+  <h1>Dashboard General</h1>
 </header>
 
-<section class="cards">
-  <div class="card" id="cardGrupos">0<span>Grupos</span></div>
-  <div class="card" id="cardAbiertos">0<span>Grupos Abiertos</span></div>
-  <div class="card" id="cardCerrados">0<span>Grupos Cerrados</span></div>
-  <div class="card" id="cardSedes">0<span>Sedes</span></div>
-</section>
+<!-- ===================== GRUPOS ===================== -->
+<section>
+  <h2>📌 Grupos</h2>
 
-<section class="filters">
-  <button onclick="mostrarTabla('hermanos')">Hermanos</button>
-  <button onclick="mostrarTabla('ninos')">Niños</button>
-</section>
+  <div class="cards">
+    <div class="card" id="totalGrupos"></div>
+    <div class="card" id="gruposAbiertos"></div>
+    <div class="card" id="gruposCerrados"></div>
+    <div class="card" id="totalSedes"></div>
+  </div>
 
-<section class="table-container">
   <table>
-    <thead id="thead"></thead>
-    <tbody id="tbody"></tbody>
+    <thead>
+      <tr>
+        <th>Sede</th>
+        <th>Lugar</th>
+        <th>Grupos</th>
+        <th>CREC</th>
+        <th>Warriors</th>
+        <th>Relevo</th>
+        <th>No Reportado</th>
+        <th>No Realizado</th>
+      </tr>
+    </thead>
+    <tbody id="tablaGrupos"></tbody>
   </table>
 </section>
 
+<!-- ===================== ASISTENCIA ===================== -->
+<section>
+  <h2>👥 Asistencia</h2>
+
+  <div class="filters">
+    <button onclick="mostrarAsistencia('hermanos')">Hermanos</button>
+    <button onclick="mostrarAsistencia('ninos')">Niños</button>
+  </div>
+
+  <table>
+    <thead id="theadAsistencia"></thead>
+    <tbody id="tbodyAsistencia"></tbody>
+  </table>
+</section>
+
+<script src="js/data-grupos.js"></script>
 <script src="js/data-asistencia.js"></script>
+<script src="js/grupos.js"></script>
 <script src="js/asistencia.js"></script>
 </body>
 </html>
