@@ -1,32 +1,90 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <title>Dashboard de Asistencia</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../styles.css">
-</head>
-<body>
-
-<header>
-  <h1>✅ Dashboard de Asistencia</h1>
-  <a href="../index.html" class="btn-link">⬅ Volver a Grupos</a>
-</header>
-
-<section class="kpis">
-  <div class="kpi">
-    <span>Total Asistentes</span>
-    <strong id="totalAsistentes">0</strong>
-  </div>
-  <div class="kpi">
-    <span>Total Ausentes</span>
-    <strong id="totalAusentes">0</strong>
-  </div>
-</section>
-
-<main id="dashboard"></main>
-
-<script src="data.js"></script>
-<script src="app.js"></script>
-</body>
-</html>
+const asistenciaData = [
+  {
+    sede: "KENNEDY",
+    grupos: 208,
+    lugar: "AUDITORIO PRINCIPAL",
+    estado: { crec: 181, warriors: 7, relevo: 20, noReportado: 5, noRealizado: 3 },
+    hermanos: { total: 1102, nuevos: 214, conversiones: 13, grupo: 1316, culto: 802 },
+    ninos: { total: 92, nuevos: 94, conversiones: 12, grupo: 186, culto: 210 }
+  },
+  {
+    sede: "FONTIBÓN / ENGATIVÁ",
+    grupos: 103,
+    lugar: "AUDITORIO PRINCIPAL",
+    estado: { crec: 98, warriors: 0, relevo: 5, noReportado: 0, noRealizado: 1 },
+    hermanos: { total: 699, nuevos: 177, conversiones: 13, grupo: 876, culto: 798 },
+    ninos: { total: 86, nuevos: 38, conversiones: 8, grupo: 124, culto: 145 }
+  },
+  {
+    sede: "BOSA",
+    grupos: 84,
+    lugar: "AUDITORIO PRINCIPAL",
+    estado: { crec: 75, warriors: 1, relevo: 6, noReportado: 2, noRealizado: 1 },
+    hermanos: { total: 510, nuevos: 73, conversiones: 2, grupo: 582, culto: 204 },
+    ninos: { total: 48, nuevos: 89, conversiones: 4, grupo: 137, culto: 69 }
+  },
+  {
+    sede: "INTERLOCALIDADES",
+    grupos: 1,
+    lugar: "AUDITORIO PRINCIPAL",
+    estado: { crec: 1, warriors: 0, relevo: 0, noReportado: 0, noRealizado: 0 },
+    hermanos: { total: 25, nuevos: 17, conversiones: 0, grupo: 42, culto: 28 },
+    ninos: { total: 0, nuevos: 0, conversiones: 0, grupo: 0, culto: 0 }
+  },
+  {
+    sede: "TEJAR",
+    grupos: 136,
+    lugar: "SEDES BOGOTÁ",
+    estado: { crec: 126, warriors: 0, relevo: 6, noReportado: 11, noRealizado: 1 },
+    hermanos: { total: 681, nuevos: 79, conversiones: 5, grupo: 760, culto: 461 },
+    ninos: { total: 80, nuevos: 25, conversiones: 7, grupo: 105, culto: 107 }
+  },
+  {
+    sede: "CIUDAD BOLIVAR",
+    grupos: 112,
+    lugar: "SEDES BOGOTÁ",
+    estado: { crec: 112, warriors: 0, relevo: 0, noReportado: 1, noRealizado: 5 },
+    hermanos: { total: 669, nuevos: 127, conversiones: 24, grupo: 796, culto: 438 },
+    ninos: { total: 82, nuevos: 53, conversiones: 19, grupo: 135, culto: 137 }
+  },
+  {
+    sede: "SOACHA",
+    grupos: 103,
+    lugar: "SEDES BOGOTÁ",
+    estado: { crec: 103, warriors: 0, relevo: 0, noReportado: 0, noRealizado: 4 },
+    hermanos: { total: 594, nuevos: 76, conversiones: 10, grupo: 670, culto: 426 },
+    ninos: { total: 243, nuevos: 37, conversiones: 9, grupo: 280, culto: 145 }
+  },
+  {
+    sede: "USME",
+    grupos: 95,
+    lugar: "SEDES BOGOTÁ",
+    estado: { crec: 95, warriors: 0, relevo: 0, noReportado: 1, noRealizado: 10 },
+    hermanos: { total: 471, nuevos: 38, conversiones: 6, grupo: 509, culto: 218 },
+    ninos: { total: 56, nuevos: 22, conversiones: 3, grupo: 78, culto: 62 }
+  },
+  {
+    sede: "VALLEDUPAR",
+    grupos: 88,
+    lugar: "SEDES NACIONALES",
+    estado: { crec: 88, warriors: 0, relevo: 0, noReportado: 0, noRealizado: 1 },
+    hermanos: { total: 583, nuevos: 177, conversiones: 19, grupo: 760, culto: 499 },
+    ninos: { total: 265, nuevos: 106, conversiones: 44, grupo: 371, culto: 254 }
+  },
+  {
+    sede: "NACIONAL",
+    grupos: 1,
+    lugar: "ON LINE",
+    estado: { crec: 1, warriors: 0, relevo: 0, noReportado: 0, noRealizado: 0 },
+    hermanos: { total: 8, nuevos: 11, conversiones: 0, grupo: 20, culto: 0 },
+    ninos: { total: 0, nuevos: 0, conversiones: 0, grupo: 0, culto: 0 }
+  },
+  {
+    sede: "INTERNACIONAL",
+    grupos: 1,
+    lugar: "ON LINE",
+    estado: { crec: 1, warriors: 0, relevo: 0, noReportado: 0, noRealizado: 0 },
+    hermanos: { total: 16, nuevos: 6, conversiones: 0, grupo: 22, culto: 0 },
+    ninos: { total: 0, nuevos: 0, conversiones: 0, grupo: 0, culto: 0 }
+  }
+];
