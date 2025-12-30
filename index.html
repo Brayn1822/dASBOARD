@@ -2,28 +2,35 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Dashboard de Grupos</title>
+  <title>Dashboard General</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
 <header>
-  <h1>📊 Dashboard General de Grupos</h1>
+  <h1>📊 Dashboard General</h1>
+
+  <!-- TABS -->
+  <div class="tabs">
+    <button class="tab active" data-view="grupos">Grupos</button>
+    <button class="tab" data-view="asistencia">Asistencia</button>
+  </div>
 </header>
 
-<section class="kpis">
+<!-- KPIs SOLO GRUPOS -->
+<section class="kpis" id="kpisGrupos">
   <div class="kpi">
     <span>Total de Grupos</span>
     <strong id="totalGrupos">0</strong>
   </div>
   <div class="kpi">
     <span>Grupos Abiertos (Año)</span>
-    <strong id="gruposAbiertos">74</strong>
+    <strong>74</strong>
   </div>
   <div class="kpi">
     <span>Grupos Cerrados (Año)</span>
-    <strong id="gruposCerrados">33</strong>
+    <strong>33</strong>
   </div>
   <div class="kpi">
     <span>Total de Sedes</span>
@@ -31,7 +38,18 @@
   </div>
 </section>
 
-<main id="dashboard"></main>
+<!-- VISTA GRUPOS -->
+<main id="view-grupos" class="view active">
+  <div id="dashboard"></div>
+</main>
+
+<!-- VISTA ASISTENCIA -->
+<main id="view-asistencia" class="view">
+  <div class="placeholder">
+    <h2>✅ Asistencia</h2>
+    <p>Aquí irá la vista de asistencia (por fechas, sedes, personas, QR, etc).</p>
+  </div>
+</main>
 
 <script src="data.js"></script>
 <script src="app.js"></script>
