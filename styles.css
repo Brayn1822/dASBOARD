@@ -10,6 +10,16 @@
   box-sizing:border-box;
   font-family: system-ui, sans-serif;
 }
+.btn-link{
+  display:inline-block;
+  margin-top:10px;
+  background:var(--accent);
+  color:#020617;
+  padding:10px 16px;
+  border-radius:10px;
+  text-decoration:none;
+  font-weight:600;
+}
 
 body{
   margin:0;
